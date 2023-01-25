@@ -66,7 +66,9 @@ public class ControlePet {
     		adicionaPet("Garfield", "Gato", "Persa", "Macho", "Laranja com listras pretas", LocalDate.parse("1978-06-19"), "9876543210987654", "9876542");
     		adicionaPet("Jake", "Cachorro", "Buldogue", "Macho", "Amarelo", LocalDate.parse("2010-04-11"), "6172839485172839", "4851672");
     		adicionaPet("Scooby-Doo", "Cachorro", "Dogue Alemão", "Macho", "Marrom com manchas pretas", LocalDate.parse("1969-09-13"), "7894561237894561", "7894562");
+    		
     		this.variavelAuxiliarPet++;
+    		
     	}
     	
     }

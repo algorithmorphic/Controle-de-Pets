@@ -13,10 +13,14 @@ public class ControleTutor {
 	TelaDetalhesTutor telaDetalhesTutor;
 	private ArrayList<Tutor> tutores;
 	
+	int variavelAuxiliarTutor;
+	
 	//Construtor
 	public ControleTutor() {
 		super();
 		tutores = new ArrayList<Tutor>();
+		
+		variavelAuxiliarTutor = 0;
 		
 	}
 	
@@ -54,6 +58,19 @@ public class ControleTutor {
     
     public ArrayList<Tutor> getTutores() {
     	return tutores;
+    }
+    
+    public void fillWithSomeData(int variavelAuxiliarTutor) {
+    	if(this.variavelAuxiliarTutor == variavelAuxiliarTutor) {
+    		adicionaTutor("Manoel", "Gomes", LocalDate.parse("1969-12-02"), "Balsas, Maranhão, Brasil", 987654321, "canetaazul@gmail.com", "3658241", "45937685923");
+    		adicionaTutor("Ariana", "Grande", LocalDate.parse("1993-06-26"), "Boca Raton, Flórida, Estados Unidos da América", 923456789, "bigariana@gmail.com", "1240986", "87312504619");
+    		adicionaTutor("Bruna", "Marquezine", LocalDate.parse("1995-08-04"), "Duque de Caxias, Rio de Janeiro, Brasil", 912345678, "namoradadoartur@gmail.com", "6753812", "69548270345");
+    		adicionaTutor("Neymar", "Júnior", LocalDate.parse("1992-02-05"), "Mogi das Cruzes, São Paulo, Brasil", 987654321, "meninoney@gmail.com", "8492760", "29384560712");
+    		adicionaTutor("Cauã", "Reymond", LocalDate.parse("1980-05-20"), "Rio de Janeiro, Rio de Janeiro, Brasil", 943210987, "artur@gmail.com", "5309418", "73469058102");
+    		
+    		
+    		this.variavelAuxiliarTutor++;
+    	}
     }
     
     // método para exibir os pets de um tutor

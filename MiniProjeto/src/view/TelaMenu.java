@@ -19,6 +19,7 @@ public class TelaMenu {
 	ControleTutor controleTutor;
 	ControlePet controlePet;
 	
+	int variavelAuxiliarTutor;
 	int variavelAuxiliarPet;
 	
 	//Construtor
@@ -67,7 +68,10 @@ public class TelaMenu {
 		telaMenu.setVisible(true);
 		
 		//Pré-Cadastro de dados.
+		variavelAuxiliarTutor = 0;
 		variavelAuxiliarPet = 0;
+		
+		controleTutor.fillWithSomeData(variavelAuxiliarTutor);
 		controlePet.fillWithSomeData(variavelAuxiliarPet);
 		
 		
