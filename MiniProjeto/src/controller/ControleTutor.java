@@ -40,13 +40,11 @@ public class ControleTutor {
 	}
 
 	
-    //Método para adicionar um tutor
+	 //Adiciona um tutor ao ArrayList de tutores.
     public void adicionaTutor(String nome, String sobrenome, LocalDate dataNascimento, String endereco, int telefone, String email, String rg, String cpf) {
-        // cria uma nova instância da classe Tutor com os dados fornecidos
+        //Cria uma nova instância da classe Tutor com os dados fornecidos.
         tutor = new Tutor(nome, sobrenome, dataNascimento, endereco, telefone, email, rg, cpf);
-        
-        // adiciona o tutor à lista
-        //tutores = new ArrayList<Tutor>();
+
         tutores.add(tutor);
     }
     

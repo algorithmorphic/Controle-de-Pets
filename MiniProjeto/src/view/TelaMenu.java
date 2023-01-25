@@ -3,6 +3,7 @@ package view;
 import model.*;
 import javax.swing.*;
 
+import controller.ControlePet;
 import controller.ControleTutor;
 
 import java.awt.*;
@@ -16,11 +17,14 @@ public class TelaMenu {
 	JButton botaoMedicamento = new JButton("Medicamento");
 	
 	ControleTutor controleTutor;
+	ControlePet controlePet;
 	
 	//Construtor
 	public TelaMenu() {
-		//Instancia um construtor de ControleTutor.
+		//Instancia os construtores dos controladores.
 		controleTutor = new ControleTutor();
+		controlePet = new ControlePet();
+		
 		
 		//Configura posição, aparência e fonte dos botões.
 		botaoTutor.setBounds(35, 30, 315, 30);
@@ -61,10 +65,16 @@ public class TelaMenu {
 		telaMenu.setVisible(true);
 		
 		
-		//Adiciona uma ação ao botão "Tutor".
+		//Adiciona uma ação aos botões.
 		botaoTutor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controleTutor.abreTelaTutor();
+			}
+		});
+		
+		botaoPet.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controlePet.abreTelaPet();
 			}
 		});
 		
