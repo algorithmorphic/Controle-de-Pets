@@ -98,7 +98,7 @@ public class TelaDetalhesPet extends JFrame {
         campoTextoCor = new JTextField(pet.getCor());
         campoTextoCor.setBackground(Color.WHITE);
         campoTextoCor.setEditable(false);
-        JLabel textoCor = new JLabel("    Cor:");
+        JLabel textoCor = new JLabel("    Cor/Pelagem:");
         textoCor.setForeground(Color.BLACK);
         textoCor.setFont(FontesMiniProjeto.fontePadrao);
         painel.add(textoCor);

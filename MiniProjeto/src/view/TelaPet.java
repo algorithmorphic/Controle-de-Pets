@@ -11,6 +11,8 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+
 import javax.swing.*;
 
 import java.util.ArrayList;
@@ -119,7 +121,6 @@ public class TelaPet extends JFrame {
         
         //Atualiza a lista de pets.
         atualizaLista();
-        
         
         //Adiciona uma ação aos botões criados.
         botaoCadastrar.addActionListener(e -> controlePet.abreTelaCadastroPet());

@@ -38,6 +38,7 @@ public class TelaCadastroPet extends JFrame {
     private JButton botaoSalvar;
     private JButton botaoVoltar;
 
+    //Construtor
     public TelaCadastroPet(ControlePet controlePet, ArrayList<Pet> pets) {
         super("Cadastro de Animal de Estimação");
         
@@ -92,7 +93,7 @@ public class TelaCadastroPet extends JFrame {
         painel.add(campoTextoSexo);
 
         campoTextoCor = new JTextField();
-        JLabel textoCor = new JLabel("    Cor:");
+        JLabel textoCor = new JLabel("    Cor/Pelagem:");
         textoCor.setForeground(Color.BLACK);
         textoCor.setBackground(Color.WHITE);
         textoCor.setFont(FontesMiniProjeto.fontePadrao);
@@ -163,8 +164,10 @@ public class TelaCadastroPet extends JFrame {
         
         painelBotoes.add(Box.createHorizontalGlue());
         add(painelBotoes, BorderLayout.SOUTH);
-
+        
         // Adiciona o painel à tela
         add(painel);
+
     }
+    
 }

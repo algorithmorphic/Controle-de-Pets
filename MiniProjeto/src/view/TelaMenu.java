@@ -19,6 +19,8 @@ public class TelaMenu {
 	ControleTutor controleTutor;
 	ControlePet controlePet;
 	
+	int variavelAuxiliarPet;
+	
 	//Construtor
 	public TelaMenu() {
 		//Instancia os construtores dos controladores.
@@ -63,6 +65,10 @@ public class TelaMenu {
 		
 		//Torna telaMenu visível.
 		telaMenu.setVisible(true);
+		
+		//Pré-Cadastro de dados.
+		variavelAuxiliarPet = 0;
+		controlePet.fillWithSomeData(variavelAuxiliarPet);
 		
 		
 		//Adiciona uma ação aos botões.
