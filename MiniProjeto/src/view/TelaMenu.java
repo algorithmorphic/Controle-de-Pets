@@ -5,6 +5,7 @@ import javax.swing.*;
 
 import controller.ControlePet;
 import controller.ControleTutor;
+import controller.ControleVacina;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -14,19 +15,22 @@ public class TelaMenu {
 	JButton botaoTutor = new JButton("Tutor");
 	JButton botaoPet = new JButton("Animal de Estimação");
 	JButton botaoCartao = new JButton("Cartão de Vacinação e Vermifugação");
-	JButton botaoMedicamento = new JButton("Medicamento");
+	JButton botaoVacina = new JButton("Vacina");
 	
 	ControleTutor controleTutor;
 	ControlePet controlePet;
+	ControleVacina controleVacina;
 	
 	int variavelAuxiliarTutor;
 	int variavelAuxiliarPet;
+	int variavelAuxiliarVacina;
 	
 	//Construtor
 	public TelaMenu() {
 		//Instancia os construtores dos controladores.
 		controleTutor = new ControleTutor();
 		controlePet = new ControlePet();
+		controleVacina = new ControleVacina();
 		
 		
 		//Configura posição, aparência e fonte dos botões.
@@ -45,16 +49,16 @@ public class TelaMenu {
 		botaoCartao.setBackground(Color.WHITE);
 		botaoCartao.setFont(FontesMiniProjeto.fontePadrao);
 		
-		botaoMedicamento.setBounds(35, 180, 315, 30);
-		botaoMedicamento.setForeground(Color.BLACK);
-		botaoMedicamento.setBackground(Color.WHITE);
-		botaoMedicamento.setFont(FontesMiniProjeto.fontePadrao);
+		botaoVacina.setBounds(35, 180, 315, 30);
+		botaoVacina.setForeground(Color.BLACK);
+		botaoVacina.setBackground(Color.WHITE);
+		botaoVacina.setFont(FontesMiniProjeto.fontePadrao);
 		
 		//Adiciona botões à tela.
 		telaMenu.add(botaoTutor);
 		telaMenu.add(botaoPet);
 		telaMenu.add(botaoCartao);
-		telaMenu.add(botaoMedicamento);
+		telaMenu.add(botaoVacina);
 		
 		//Define o layout de tela.
 		telaMenu.setLayout(null);
@@ -70,9 +74,11 @@ public class TelaMenu {
 		//Pré-Cadastro de dados.
 		variavelAuxiliarTutor = 0;
 		variavelAuxiliarPet = 0;
+		variavelAuxiliarVacina = 0;
 		
 		controleTutor.fillWithSomeData(variavelAuxiliarTutor);
 		controlePet.fillWithSomeData(variavelAuxiliarPet);
+		controleVacina.fillWithSomeData(variavelAuxiliarVacina);
 		
 		
 		//Adiciona uma ação aos botões.
@@ -85,6 +91,12 @@ public class TelaMenu {
 		botaoPet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controlePet.abreTelaPet();
+			}
+		});
+		
+		botaoVacina.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controleVacina.abreTelaVacina();
 			}
 		});
 		
