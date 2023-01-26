@@ -2,7 +2,7 @@ package model;
 import java.time.LocalDate;
 
 public abstract class Medicamento {
-	 String nome;
+	private String tipo;
 	private String fabricante;
 	private LocalDate dataFabricacao;
 	private LocalDate dataValidade;
@@ -10,11 +10,11 @@ public abstract class Medicamento {
 	private boolean status; // Para verificação de usabilidade.
 	
 	
-	public String getNome() {
-		return nome;
+	public String getTipo() {
+		return tipo;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 	public String getFabricante() {
 		return fabricante;

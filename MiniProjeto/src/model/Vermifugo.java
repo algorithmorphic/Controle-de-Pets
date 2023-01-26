@@ -1,19 +1,21 @@
 package model;
 
 public class Vermifugo extends Medicamento {
-	private String tipo;
+	private String forma;
 
-	public Vermifugo(String tipo) {
+	public Vermifugo(String forma) {
 		super();
-		this.tipo = tipo;
+		
+		this.forma = forma;
+		
 	}
 
-	public String getTipo() {
-		return tipo;
+	public String getForma() {
+		return forma;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setForma(String forma) {
+		this.forma = forma;
 	}
 	
 }

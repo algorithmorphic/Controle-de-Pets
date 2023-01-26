@@ -9,10 +9,10 @@ public class Vacina extends Medicamento {
 	
 	
 	//Construtor.
-	public Vacina(String nome, String fabricante, LocalDate dataFabricacao, LocalDate dataValidade, String lote, boolean status, String medicoVeterinario, String crmv, String uf) {
+	public Vacina(String tipo, String fabricante, LocalDate dataFabricacao, LocalDate dataValidade, String lote, boolean status, String medicoVeterinario, String crmv, String uf) {
 		super();
 		
-		this.setNome(nome);
+		this.setTipo(tipo);
 		this.setFabricante(fabricante);
 		this.setDataFabricacao(dataFabricacao);
 		this.setDataValidade(dataValidade);
