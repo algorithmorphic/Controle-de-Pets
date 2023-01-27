@@ -17,28 +17,27 @@ import javax.swing.*;
 
 import java.util.ArrayList;
 
-import controller.ControlePet;
-import model.Pet;
+import controller.ControleVacina;
+import model.Vacina;
 
-public class TelaPet extends JFrame {
-    private JPanel painelPets;
+public class TelaVacina extends JFrame {
+    private JPanel painelVacinas;
     private JButton botaoCadastrar;
-    private JButton botaoBuscar;
     private JButton botaoAtualizar;
     private JButton botaoVoltar;
     
-    private ControlePet controlePet;
-    private ArrayList<Pet> pets;
+    private ControleVacina controleVacina;
+    private ArrayList<Vacina> vacinas;
     
     //Declação para funcionar dentro de escopos diferentes aqui no código.
     GridBagConstraints gbc;
     
     //Construtor
-    public TelaPet(ControlePet controlePet, ArrayList<Pet> pets) {
-        super("CRUD de Animal de Estimação");
+    public TelaVacina(ControleVacina controleVacina, ArrayList<Vacina> vacinas) {
+        super("CRUD de Vacina");
         
-        this.controlePet = controlePet;
-    	this.pets = pets;
+        this.controleVacina = controleVacina;
+    	this.vacinas = vacinas;
     	
     	//Chama um método para a criação da tela.
     	criaTela();
@@ -57,17 +56,17 @@ public class TelaPet extends JFrame {
         
         JPanel painelTitulo = new JPanel(new FlowLayout(FlowLayout.CENTER));
         
-        JLabel labelTitulo = new JLabel("Animais de Estimação Cadastrados: ");
+        JLabel labelTitulo = new JLabel("Vacinas Cadastradas: ");
         
         labelTitulo.setFont(FontesMiniProjeto.fontePadrao);
         painelTitulo.add(labelTitulo);
         add(painelTitulo, BorderLayout.NORTH);
         
-        //Criação de um painel de pets.
-        painelPets = new JPanel();
+        //Criação de um painel de vacinas.
+        painelVacinas = new JPanel();
         
-        //Define um layout específico para o painel de pets.
-        painelPets.setLayout(new GridBagLayout());
+        //Define um layout específico para o painel de vacinas.
+        painelVacinas.setLayout(new GridBagLayout());
         
         //Utilização do GridBagConstraints a fim de manter os pets que forem sendo criados empilhados na vertical e no centro da tela.
         gbc = new GridBagConstraints();
@@ -75,7 +74,7 @@ public class TelaPet extends JFrame {
         gbc.gridy = GridBagConstraints.PAGE_START;
         gbc.insets = new Insets(10,10,10,10); 
         
-        add(new JScrollPane(painelPets), BorderLayout.CENTER);
+        add(new JScrollPane(painelVacinas), BorderLayout.CENTER);
         
         
         //Cria um painel para conter três botões.
@@ -84,36 +83,29 @@ public class TelaPet extends JFrame {
         //Definine o layout do painel dos botões.
         painelBotoes.setLayout(new BoxLayout(painelBotoes, BoxLayout.X_AXIS));
         
-        //Cria os quatro botões.
+        //Cria os três botões.
         botaoCadastrar = new JButton("Cadastrar");
-        botaoBuscar = new JButton("Buscar");
         botaoAtualizar = new JButton("Atualizar");
         botaoVoltar = new JButton("Voltar");
         
         //Define o tamanho, a aparência e a fonte dos botões.
-        botaoCadastrar.setPreferredSize(new Dimension(200, 50));
+        botaoCadastrar.setPreferredSize(new Dimension(150, 50));
         botaoCadastrar.setForeground(Color.BLACK);
         botaoCadastrar.setBackground(Color.WHITE);
         botaoCadastrar.setFont(FontesMiniProjeto.fontePadrao);
         
-        botaoBuscar.setPreferredSize(new Dimension(200, 50));
-        botaoBuscar.setForeground(Color.BLACK);
-        botaoBuscar.setBackground(Color.WHITE);
-        botaoBuscar.setFont(FontesMiniProjeto.fontePadrao);
-        
-        botaoAtualizar.setPreferredSize(new Dimension(200, 50));
+        botaoAtualizar.setPreferredSize(new Dimension(150, 50));
         botaoAtualizar.setForeground(Color.BLACK);
         botaoAtualizar.setBackground(Color.WHITE);
         botaoAtualizar.setFont(FontesMiniProjeto.fontePadrao);
         
-        botaoVoltar.setPreferredSize(new Dimension(200, 50));
+        botaoVoltar.setPreferredSize(new Dimension(150, 50));
         botaoVoltar.setForeground(Color.BLACK);
         botaoVoltar.setBackground(Color.WHITE);
         botaoVoltar.setFont(FontesMiniProjeto.fontePadrao);
         
         //Adiciona os botões ao painel de botões.
         painelBotoes.add(botaoCadastrar);
-        painelBotoes.add(botaoBuscar);
         painelBotoes.add(botaoAtualizar);
         painelBotoes.add(botaoVoltar);
         
@@ -131,8 +123,7 @@ public class TelaPet extends JFrame {
         atualizaLista();
         
         //Adiciona uma ação aos botões criados.
-        botaoCadastrar.addActionListener(e -> controlePet.abreTelaCadastroPet());
-        botaoBuscar.addActionListener(e -> controlePet.abreTelaBuscaPet());
+        botaoCadastrar.addActionListener(e -> controleVacina.abreTelaCadastroVacina());
         botaoAtualizar.addActionListener(e -> atualizaLista());
         botaoVoltar.addActionListener(e -> dispose());
         
@@ -140,12 +131,12 @@ public class TelaPet extends JFrame {
 
     //Atualiza a lista de pets apresentada na tela.
     private void atualizaLista() {
-        painelPets.removeAll();
+        painelVacinas.removeAll();
         
-        pets = controlePet.getPets();
+        vacinas = controleVacina.getVacinas();
         
-        if(pets.isEmpty()) {
-        	JLabel label = new JLabel("Não há animais de estimação cadastrados!");
+        if(vacinas.isEmpty()) {
+        	JLabel label = new JLabel("Não há vacinas cadastradas!");
         	
         	label.setFont(FontesMiniProjeto.fontePadrao);
         	label.setForeground(Color.RED);
@@ -158,16 +149,16 @@ public class TelaPet extends JFrame {
         	JOptionPane.showMessageDialog(null, label, "Aviso", JOptionPane.WARNING_MESSAGE);
 
         } else {
-	        for (Pet pet : pets) {
-	            JButton botaoPet = new JButton(pet.getNome());
+	        for (Vacina vacina : vacinas) {
+	            JButton botaoVacina = new JButton(vacina.getTipo());
 	            
-	            botaoPet.addActionListener(e -> controlePet.abreTelaDetalhesPet(pet));
+	            botaoVacina.addActionListener(e -> controleVacina.abreTelaDetalhesVacina(vacina));
 	            
-	            botaoPet.setForeground(Color.BLACK);
-	            botaoPet.setBackground(Color.WHITE);
-	            botaoPet.setFont(FontesMiniProjeto.fontePadrao);
+	            botaoVacina.setForeground(Color.BLACK);
+	            botaoVacina.setBackground(Color.WHITE);
+	            botaoVacina.setFont(FontesMiniProjeto.fontePadrao);
 	            
-	            painelPets.add(botaoPet, gbc);
+	            painelVacinas.add(botaoVacina, gbc);
 	            gbc.gridy++;
 	        }
         }
@@ -175,10 +166,10 @@ public class TelaPet extends JFrame {
         //Atualizando o conteúdo dos componente na tela:
         
         //É usado para invalidar o layout do componente, o que significa que o layout manager será chamado para recalcular o tamanho e a posição do componente. Isso é útil quando você adiciona ou remove componentes de um container ou quando muda o tamanho de um componente.
-        painelPets.revalidate();
+        painelVacinas.revalidate();
         
         //É usado para repintar o componente. Isso significa que o componente será redesenhado na tela. Isso é útil quando você altera o conteúdo de um componente, como mudar o texto de um JLabel ou mudar a cor de fundo de um JPanel.
-        painelPets.repaint();
+        painelVacinas.repaint();
         
         //pack(); //É utilizado para ajustar o tamanho da janela de acordo com o tamanho dos componentes contidos nela. Ele ajusta o tamanho da janela para que todos os componentes sejam exibidos corretamente, sem deixar espaços vazios.
         

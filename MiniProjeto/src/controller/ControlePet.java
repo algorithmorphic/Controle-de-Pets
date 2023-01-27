@@ -10,6 +10,7 @@ public class ControlePet {
 	Pet pet;
 	TelaPet telaPet;
 	TelaCadastroPet telaCadastroPet;
+	TelaBuscaPet telaBuscaPet;
 	TelaDetalhesPet telaDetalhesPet;
 	private ArrayList<Pet> pets;
 	
@@ -35,13 +36,16 @@ public class ControlePet {
 		
 	}
 
+	public void abreTelaBuscaPet() {
+		telaBuscaPet = new telaBuscaPet(this, pets);
+		telaBuscaPet.setVisible(true);
+	}
 
 	public void abreTelaDetalhesPet(Pet pet) {
 		telaDetalhesPet = new TelaDetalhesPet(this, pet);
 		telaDetalhesPet.setVisible(true);
 		
 	}
-
 	
     //Adiciona um pet ao ArrayList de pets.
     public void adicionaPet(String nome, String especie, String raca, String sexo, String cor, LocalDate dataNascimento, String microchip, String rga) {
