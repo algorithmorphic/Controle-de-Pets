@@ -132,7 +132,7 @@ public class TelaPet extends JFrame {
         
         //Adiciona uma ação aos botões criados.
         botaoCadastrar.addActionListener(e -> controlePet.abreTelaCadastroPet());
-        botaoBuscar.addActionListener(e -> controlePet.abreTelaBuscaPet());
+        botaoBuscar.addActionListener(e -> controlePet.abreTelaBuscaNomePet());
         botaoAtualizar.addActionListener(e -> atualizaLista());
         botaoVoltar.addActionListener(e -> dispose());
         

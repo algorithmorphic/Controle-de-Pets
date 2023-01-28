@@ -7,6 +7,8 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.Box;
@@ -17,7 +19,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 import controller.ControlePet;
@@ -27,7 +28,6 @@ public class TelaBuscaPet extends JFrame {
     private JPanel painelPets;
     private JButton botaoNovaBusca;    
     private JButton botaoVoltar;
-    private JTextField campoTextoNome;
     
     private ControlePet controlePet;
     private ArrayList<Pet> pets;
@@ -60,10 +60,11 @@ public class TelaBuscaPet extends JFrame {
         
         JPanel painelTitulo = new JPanel(new FlowLayout(FlowLayout.CENTER));
         
-        JLabel labelTitulo = new JLabel("Animais de estimação cadastrados com este nome: ");
+        JLabel labelTitulo = new JLabel("Animais de estimação com este nome:");
         
         labelTitulo.setFont(FontesMiniProjeto.fontePadrao);
         painelTitulo.add(labelTitulo);
+        
         add(painelTitulo, BorderLayout.NORTH);
         
         //Criação de um painel de pets.
@@ -75,10 +76,12 @@ public class TelaBuscaPet extends JFrame {
         //Utilização do GridBagConstraints a fim de manter os pets que forem sendo criados empilhados na vertical e no centro da tela.
         gbc = new GridBagConstraints();
         gbc.gridx = GridBagConstraints.CENTER;
-        gbc.gridy = GridBagConstraints.PAGE_START;
+        gbc.gridy = GridBagConstraints.BELOW_BASELINE_TRAILING;
         gbc.insets = new Insets(10,10,10,10); 
         
         add(new JScrollPane(painelPets), BorderLayout.CENTER);
+        //add(painelPets, BorderLayout.CENTER)
+        
         
         
         //Cria um painel para conter três botões.
@@ -87,11 +90,6 @@ public class TelaBuscaPet extends JFrame {
         //Definine o layout do painel dos botões.
         painelBotoes.setLayout(new BoxLayout(painelBotoes, BoxLayout.X_AXIS));
         
-        campoTextoNome = new JTextField();
-        campoTextoNome.setBackground(Color.WHITE);
-        campoTextoNome.setEditable(true);
-        campoTextoNome.setBounds(10, 130, 115, 30);
-        add(campoTextoNome);
         
         //Cria os dois botões.
         botaoNovaBusca = new JButton("Nova busca");
@@ -126,7 +124,16 @@ public class TelaBuscaPet extends JFrame {
         atualizaBusca();
         
         //Adiciona uma ação aos botões criados.
-        botaoNovaBusca.addActionListener(e -> atualizaBusca());
+        
+        //botaoNovaBusca.addActionListener(e -> controlePet.abreTelaBuscaNomePet());
+        botaoNovaBusca.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controlePet.abreTelaBuscaNomePet();
+        		
+        		dispose();
+        
+			}
+		});
         botaoVoltar.addActionListener(e -> dispose());
         
     }
@@ -137,18 +144,16 @@ public class TelaBuscaPet extends JFrame {
         
         pets = controlePet.getPets();
         
-        //controlePet.abreTelaBuscaNomePet();
         
         variavelAuxiliar = 0;
         
         
-        System.out.println(campoTextoNome.getText());
         
-	    for(Pet pet : pets) {
-	    	
-	    	System.out.println(pet.getNome());
-	    	
-	    	if((pet.getNome()) == (campoTextoNome.getText())) {
+	    for(Pet pet : pets) {	
+	    	//"(pet.getNome()) == controlePet.getNomeBuscado()"
+	    	//No código acima eu estava comparando a referência de memória, e
+	    	//não o conteúdo das Strings.
+	    	if((pet.getNome().equals(controlePet.getNomeBuscado()))) {
 	    		JButton botaoPet = new JButton(pet.getNome());
 	            
 	    		botaoPet.addActionListener(e -> controlePet.abreTelaDetalhesPet(pet));

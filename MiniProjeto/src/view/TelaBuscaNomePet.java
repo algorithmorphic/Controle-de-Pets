@@ -2,6 +2,7 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,7 +24,7 @@ public class TelaBuscaNomePet extends JFrame {
 	private ControlePet controlePet;
 	
 	public TelaBuscaNomePet(ControlePet controlePet) {
-		super("blá");
+		super("Busca por Animal de Estimação");
 		
 		this.controlePet = controlePet;
 		
@@ -31,17 +32,27 @@ public class TelaBuscaNomePet extends JFrame {
     	setLayout(new BorderLayout());
     	
     	//Define o tamanho, a localização e a operação padrão de fechar a tela.
-    	setSize(300, 200);
+    	setSize(300, 150);
     	setLocationRelativeTo(null);
     	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             
         JPanel painelTitulo = new JPanel(new FlowLayout(FlowLayout.CENTER));
         
-        JLabel labelTitulo = new JLabel("Insira o nome do animal de estimação: ");
+        JLabel labelTitulo1 = new JLabel("Insira o nome do");
+        JLabel labelTitulo2 = new JLabel("animal de estimação: ");
         
-        labelTitulo.setFont(FontesMiniProjeto.fontePadrao);
-        painelTitulo.add(labelTitulo);
-        add(painelTitulo, BorderLayout.NORTH);
+        labelTitulo1.setFont(FontesMiniProjeto.fontePadrao);
+        painelTitulo.add(labelTitulo1);
+        
+        labelTitulo2.setFont(FontesMiniProjeto.fontePadrao);
+        painelTitulo.add(labelTitulo2);
+        
+        add(painelTitulo);
+        
+        JPanel painel = new JPanel();
+        //painel.setLayout(new GridLayout(2, 2));
+        //painel.setLayout(new BoxLayout(painel, BoxLayout.X_AXIS));
+        add(painel, BorderLayout.SOUTH);
         
         campoTextoNome = new JTextField();
         campoTextoNome.setBackground(Color.WHITE);
@@ -52,11 +63,11 @@ public class TelaBuscaNomePet extends JFrame {
 		botaoBuscar.setBackground(Color.WHITE);
 		botaoBuscar.setFont(FontesMiniProjeto.fontePadrao);
         
-        campoTextoNome.setBounds(35, 130, 315, 30);
-        botaoBuscar.setBounds(35, 180, 315, 30);
+        campoTextoNome.setPreferredSize(new Dimension(100, 30));
+        botaoBuscar.setPreferredSize(new Dimension(100, 30));
         
-        add(campoTextoNome);
-        add(botaoBuscar);
+        painel.add(campoTextoNome);
+        painel.add(botaoBuscar);
         
 		setVisible(true);
         
@@ -64,6 +75,7 @@ public class TelaBuscaNomePet extends JFrame {
 		botaoBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controlePet.setNomeBuscado(campoTextoNome.getText());
+				controlePet.abreTelaBuscaPet();
 				
 				dispose();
 			}
