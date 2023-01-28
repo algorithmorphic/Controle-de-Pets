@@ -7,14 +7,16 @@ import model.*;
 import view.*;
 
 public class ControlePet {
-	Pet pet;
-	TelaPet telaPet;
-	TelaCadastroPet telaCadastroPet;
-	TelaBuscaPet telaBuscaPet;
-	TelaDetalhesPet telaDetalhesPet;
+	private Pet pet;
+	private TelaPet telaPet;
+	private TelaCadastroPet telaCadastroPet;
+	private TelaBuscaPet telaBuscaPet;
+	private TelaBuscaNomePet telaBuscaNomePet;
+	private TelaDetalhesPet telaDetalhesPet;
 	private ArrayList<Pet> pets;
 	
-	int variavelAuxiliarPet;
+	private int variavelAuxiliarPet;
+	private String nomeBuscado;
 	
 	//Construtor
 	public ControlePet() {
@@ -22,6 +24,14 @@ public class ControlePet {
 		pets = new ArrayList<Pet>();
 		variavelAuxiliarPet = 0;
 		
+	}
+	
+	public String getNomeBuscado() {
+		return nomeBuscado;
+	}
+
+	public void setNomeBuscado(String nomeBuscado) {
+		this.nomeBuscado = nomeBuscado;
 	}
 	
 	public void abreTelaPet() {
@@ -37,8 +47,13 @@ public class ControlePet {
 	}
 
 	public void abreTelaBuscaPet() {
-		telaBuscaPet = new telaBuscaPet(this, pets);
+		telaBuscaPet = new TelaBuscaPet(this, pets);
 		telaBuscaPet.setVisible(true);
+	}
+	
+	public void abreTelaBuscaNomePet() {
+		telaBuscaNomePet = new TelaBuscaNomePet(this);
+		telaBuscaNomePet.setVisible(true);
 	}
 
 	public void abreTelaDetalhesPet(Pet pet) {
