@@ -32,7 +32,7 @@ public class TelaBuscaNomePet extends JFrame {
     	setLayout(new BorderLayout());
     	
     	//Define o tamanho, a localização e a operação padrão de fechar a tela.
-    	setSize(300, 150);
+    	setSize(300, 135);
     	setLocationRelativeTo(null);
     	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             

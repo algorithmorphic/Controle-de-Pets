@@ -60,7 +60,7 @@ public class TelaBuscaPet extends JFrame {
         
         JPanel painelTitulo = new JPanel(new FlowLayout(FlowLayout.CENTER));
         
-        JLabel labelTitulo = new JLabel("Animais de estimação com este nome:");
+        JLabel labelTitulo = new JLabel("Animais de estimação encontrados:");
         
         labelTitulo.setFont(FontesMiniProjeto.fontePadrao);
         painelTitulo.add(labelTitulo);
@@ -166,7 +166,7 @@ public class TelaBuscaPet extends JFrame {
 	    		gbc.gridy++;
 	    		
 	    		variavelAuxiliar++;
-	    		System.out.println(variavelAuxiliar);
+	    		
 	    	}
 	    	
 	    }
