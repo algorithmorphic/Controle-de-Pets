@@ -13,6 +13,7 @@ public class ControleVacina {
 	TelaDetalhesVacina telaDetalhesVacina;
 	private ArrayList<Vacina> vacinas;
 	
+	private ControlePet controlePet;
 	int variavelAuxiliarVacina;
 	
 	//Construtor
@@ -21,6 +22,10 @@ public class ControleVacina {
 		vacinas = new ArrayList<Vacina>();
 		variavelAuxiliarVacina = 0;
 		
+	}
+	
+	public void forneceControlePet(ControlePet controlePet) {
+		this.controlePet = controlePet;
 	}
 	
 	public void abreTelaVacina() {
@@ -37,7 +42,7 @@ public class ControleVacina {
 
 
 	public void abreTelaDetalhesVacina(Vacina vacina) {
-		telaDetalhesVacina = new TelaDetalhesVacina(this, vacina);
+		telaDetalhesVacina = new TelaDetalhesVacina(this, vacina, controlePet);
 		telaDetalhesVacina.setVisible(true);
 		
 	}

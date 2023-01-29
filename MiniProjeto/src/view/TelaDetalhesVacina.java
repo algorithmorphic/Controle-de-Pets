@@ -14,9 +14,12 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 
+import controller.ControlePet;
 import controller.ControleVacina;
 import model.Vacina;
 
@@ -38,12 +41,16 @@ public class TelaDetalhesVacina extends JFrame {
     private JButton botaoEditar;
     private JButton botaoApagar;
     private JButton botaoVoltar;
+    
+    private ControlePet controlePet;
 
-    public TelaDetalhesVacina(ControleVacina controleVacina, Vacina vacina) {
+    public TelaDetalhesVacina(ControleVacina controleVacina, Vacina vacina, ControlePet controlePet) {
         super("Detalhes Editáveis de Vacina");
 
         this.controleVacina = controleVacina;
         this.vacina = vacina;
+        
+        this.controlePet = controlePet;
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
@@ -202,6 +209,24 @@ public class TelaDetalhesVacina extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
             	controleVacina.removeVacina(vacina);
+            	
+            	if((controlePet.getVacinas()).isEmpty()) {
+            		JLabel label = new JLabel("Este animal de estimação ainda não recebeu uma vacina!");
+                	
+                	label.setFont(FontesMiniProjeto.fontePadrao);
+                	label.setForeground(Color.RED);
+
+                	UIManager.put("OptionPane.buttonFont", FontesMiniProjeto.fontePadrao);
+                	
+                	UIManager.put("OptionPane.foreground", Color.BLACK);
+                	UIManager.put("OptionPane.background", Color.WHITE);
+                	
+                	JOptionPane.showMessageDialog(null, label, "Aviso", JOptionPane.WARNING_MESSAGE);
+            	
+            	} else {
+            		controlePet.removeVacinaPet(vacina);
+            	}
+            	
             	dispose();
             }
         });

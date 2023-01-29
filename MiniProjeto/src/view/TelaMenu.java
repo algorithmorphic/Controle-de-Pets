@@ -32,6 +32,8 @@ public class TelaMenu {
 		controleVacina = new ControleVacina();
 		controlePet = new ControlePet(controleVacina);
 		
+		controleVacina.forneceControlePet(controlePet);
+		
 		//Configura posição, aparência e fonte dos botões.
 		botaoTutor.setBounds(35, 30, 315, 30);
 		botaoTutor.setForeground(Color.BLACK);
