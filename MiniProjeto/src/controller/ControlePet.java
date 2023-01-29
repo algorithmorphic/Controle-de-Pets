@@ -8,20 +8,29 @@ import view.*;
 
 public class ControlePet {
 	private Pet pet;
+	private ArrayList<Pet> pets;
 	private TelaPet telaPet;
 	private TelaCadastroPet telaCadastroPet;
 	private TelaBuscaPet telaBuscaPet;
 	private TelaBuscaNomePet telaBuscaNomePet;
 	private TelaDetalhesPet telaDetalhesPet;
-	private ArrayList<Pet> pets;
+	private TelaListaVacinasPet telaListaVacinasPet;
+	
+	private ControleVacina controleVacina;
+	private Vacina vacina;
+	private ArrayList<Vacina> vacinas;
 	
 	private int variavelAuxiliarPet;
 	private String nomeBuscado;
 	
 	//Construtor
-	public ControlePet() {
+	public ControlePet(ControleVacina controleVacina) {
 		super();
 		pets = new ArrayList<Pet>();
+		
+		this.controleVacina = controleVacina;
+		vacinas = new ArrayList<Vacina>();
+		
 		variavelAuxiliarPet = 0;
 		
 	}
@@ -62,6 +71,11 @@ public class ControlePet {
 		
 	}
 	
+	public void abreTelaListaVacinasPet(Pet pet) {
+		telaListaVacinasPet = new TelaListaVacinasPet(this, vacinas, controleVacina);
+		telaListaVacinasPet.setVisible(true);
+	}
+	
     //Adiciona um pet ao ArrayList de pets.
     public void adicionaPet(String nome, String especie, String raca, String sexo, String cor, LocalDate dataNascimento, String microchip, String rga) {
         //Cria uma nova instância da classe Pet com os dados fornecidos.
@@ -76,6 +90,29 @@ public class ControlePet {
     
     public ArrayList<Pet> getPets() {
     	return pets;
+    }
+    
+    public void adicionaVacinaPet(Vacina vacina) {
+    	this.vacina = vacina;
+    	
+    	vacinas.add(vacina);
+    	
+    }
+    
+    public void adicionaVacinaPet(String tipo, String fabricante, LocalDate dataFabricacao, LocalDate dataValidade, String lote, boolean status, String medicoVeterinario, String crmv, String uf) {
+    	vacina = new Vacina(tipo, fabricante, dataFabricacao, dataValidade, lote, status, medicoVeterinario, crmv, uf);
+    	
+    	vacinas.add(vacina);
+    	
+    }
+    
+    public void removeVacinaPet(Vacina vacina) {
+    	vacinas.remove(vacina);
+    	
+    }
+    
+    public ArrayList<Vacina> getVacinas() {
+    	return vacinas;
     }
     
     public void fillWithSomeData(int variavelAuxiliarPet) {

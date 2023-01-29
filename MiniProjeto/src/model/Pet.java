@@ -1,5 +1,6 @@
 package model;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Pet {
 	private String nome;
@@ -10,6 +11,8 @@ public class Pet {
 	private LocalDate dataNascimento;
 	private String microchip; // Contém 15 algarismos (somente números).
 	private String rga; // Contém 7 algarismos (somente números).
+	
+	private ArrayList<Vacina> vacinas;
 	
 	public Pet(String nome, String especie, String raca, String sexo, String cor, LocalDate dataNascimento,
 			String microchip, String rga) {
@@ -22,6 +25,8 @@ public class Pet {
 		this.dataNascimento = dataNascimento;
 		this.microchip = microchip;
 		this.rga = rga;
+		
+		vacinas = new ArrayList<Vacina>();
 	}
 
 	public String getNome() {
@@ -88,12 +93,18 @@ public class Pet {
 		this.rga = rga;
 	}
 
+	public ArrayList<Vacina> getVacinas() {
+		return vacinas;
+	}
+
+	public void setVacinas(ArrayList<Vacina> vacinas) {
+		this.vacinas = vacinas;
+	}
 
 	@Override
 	public String toString() {
 		return "Nome: " + nome + "\nEspécie: " + especie + "\nRaça: " + raca + "\nSexo: " + sexo + "\nCor: " + cor
 				+ "\nMicrochip: " + microchip + "\nRGA: " + rga;
 	}
-	
 	
 }

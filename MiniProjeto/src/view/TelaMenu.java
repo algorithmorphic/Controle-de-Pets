@@ -29,9 +29,8 @@ public class TelaMenu {
 	public TelaMenu() {
 		//Instancia os construtores dos controladores.
 		controleTutor = new ControleTutor();
-		controlePet = new ControlePet();
 		controleVacina = new ControleVacina();
-		
+		controlePet = new ControlePet(controleVacina);
 		
 		//Configura posição, aparência e fonte dos botões.
 		botaoTutor.setBounds(35, 30, 315, 30);

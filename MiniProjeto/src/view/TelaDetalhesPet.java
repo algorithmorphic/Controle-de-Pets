@@ -56,7 +56,7 @@ public class TelaDetalhesPet extends JFrame {
         add(painelTitulo, BorderLayout.NORTH);
 
         JPanel painel = new JPanel();
-        painel.setLayout(new GridLayout(8, 2));
+        painel.setLayout(new GridLayout(9, 2));
 
         //Campos de texto para exibir as informações do pet
         campoTextoNome = new JTextField(pet.getNome());
@@ -130,7 +130,24 @@ public class TelaDetalhesPet extends JFrame {
         textoRga.setFont(FontesMiniProjeto.fontePadrao);
         painel.add(textoRga);
         painel.add(campoTextoRga);
-
+        
+     
+        JLabel vacinas = new JLabel("    Vacinas recebidas:");
+        vacinas.setForeground(Color.BLACK);
+        vacinas.setFont(FontesMiniProjeto.fontePadrao);
+        painel.add(vacinas);
+        JButton botaoVer = new JButton("Ver");
+        botaoVer.setForeground(Color.BLACK);
+        botaoVer.setBackground(Color.WHITE);
+        //botaoListagemVacinas.setFont(FontesMiniProjeto.fontePadrao);
+        botaoVer.setPreferredSize(new Dimension(150, 50));
+        painel.add(botaoVer);
+        
+		botaoVer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controlePet.abreTelaListaVacinasPet(pet);
+			}
+		});
 
         JPanel painelBotoes = new JPanel();
         painelBotoes.setLayout(new BoxLayout(painelBotoes, BoxLayout.X_AXIS));
@@ -183,6 +200,7 @@ public class TelaDetalhesPet extends JFrame {
                 });
             }
         });
+        
         painelBotoes.add(botaoEditar);
 
         botaoApagar = new JButton("Apagar");
@@ -202,6 +220,7 @@ public class TelaDetalhesPet extends JFrame {
                 dispose();
             }
         });
+        
         painelBotoes.add(botaoVoltar);
 
         add(painel, BorderLayout.CENTER);
