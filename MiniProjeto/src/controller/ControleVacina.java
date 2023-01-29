@@ -64,6 +64,10 @@ public class ControleVacina {
     	return vacinas;
     }
     
+    public void alteraStatusVacina(Vacina vacina, Boolean status) {
+    	vacina.setStatus(status);
+    }
+    
     public void fillWithSomeData(int variavelAuxiliarVacina) {
     	if(this.variavelAuxiliarVacina == variavelAuxiliarVacina) {
     		adicionaVacina("V8", "Lema-Injex Biologic", LocalDate.parse("2021-03-03"), LocalDate.parse("2023-03-03"), "000000", true, "Fulano Sobrenome Aleatório", "567890123456789", "1234567");

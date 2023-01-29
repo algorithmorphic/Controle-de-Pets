@@ -266,6 +266,8 @@ public class TelaListaVacinasPet extends JFrame {
 	            
 	            botaoVacina.addActionListener(new ActionListener() {
 	    			public void actionPerformed(ActionEvent e) {
+	    				controleVacina.alteraStatusVacina(vacina, false);
+	    				
 	    				controlePet.adicionaVacinaPet(vacina);
 	    				
 	    				labelTitulo.setText("Vacinas recebidas:");
@@ -321,6 +323,8 @@ public class TelaListaVacinasPet extends JFrame {
 	            
 	            botaoVacina.addActionListener(new ActionListener() {
 	    			public void actionPerformed(ActionEvent e) {
+	    				controleVacina.alteraStatusVacina(vacina, true);
+	    				
 	    				controlePet.removeVacinaPet(vacina);
 	    				
 	    				labelTitulo.setText("Vacinas recebidas:");
