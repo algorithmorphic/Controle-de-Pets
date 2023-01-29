@@ -215,8 +215,6 @@ public class TelaListaVacinasPet extends JFrame {
     
     //Atualiza a lista de vacinas apresentada na tela.
     private void abreListaVacinas() {
-    	labelTitulo.setText("Vacinas recebidas:");
-    	
     	painelBotoes.remove(botaoNovaBusca);
     	painelBotoes.remove(botaoAdicionar);
     	painelBotoes.remove(botaoVoltar);
@@ -250,6 +248,8 @@ public class TelaListaVacinasPet extends JFrame {
 	            botaoVacina.addActionListener(new ActionListener() {
 	    			public void actionPerformed(ActionEvent e) {
 	    				controlePet.adicionaVacinaPet(vacina);
+	    				
+	    				labelTitulo.setText("Vacinas recebidas:");
 	            
 	            		atualizaLista();
 	            
