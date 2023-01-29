@@ -34,6 +34,7 @@ public class TelaListaVacinasPet extends JFrame {
     private JLabel labelTitulo;
     private JButton botaoAtualizar;
     private JButton botaoAdicionar;
+    private JButton botaoRemover;
     private JButton botaoVoltar;
     
     private ControlePet controlePet;
@@ -104,6 +105,7 @@ public class TelaListaVacinasPet extends JFrame {
         //Cria os dois botões.
         botaoAtualizar = new JButton("Atualizar");
         botaoAdicionar = new JButton("Adicionar");
+        botaoRemover = new JButton("Remover");
         botaoVoltar = new JButton("Voltar");
         
         //Define o tamanho, a aparência e a fonte dos botões.
@@ -117,6 +119,11 @@ public class TelaListaVacinasPet extends JFrame {
         botaoAdicionar.setBackground(Color.WHITE);
         botaoAdicionar.setFont(FontesMiniProjeto.fontePadrao);
         
+        botaoRemover.setPreferredSize(new Dimension(200, 50));
+        botaoRemover.setForeground(Color.BLACK);
+        botaoRemover.setBackground(Color.WHITE);
+        botaoRemover.setFont(FontesMiniProjeto.fontePadrao);
+        
         botaoVoltar.setPreferredSize(new Dimension(200, 50));
         botaoVoltar.setForeground(Color.BLACK);
         botaoVoltar.setBackground(Color.WHITE);
@@ -125,6 +132,7 @@ public class TelaListaVacinasPet extends JFrame {
         //Adiciona os botões ao painel de botões.
         painelBotoes.add(botaoAtualizar);
         painelBotoes.add(botaoAdicionar);
+        painelBotoes.add(botaoRemover);
         painelBotoes.add(botaoVoltar);
         
         //Esse método adiciona um espaço vazio horizontal (glue) ao painel de botões, o que pode ser usado para alinhar os botões dentro do painel de acordo com a necessidade do layout. O método createHorizontalGlue() da classe Box é usado para criar esse espaço vazio.
@@ -159,6 +167,15 @@ public class TelaListaVacinasPet extends JFrame {
 				labelTitulo.setText("Clique na vacina que deseja adicionar:");
 				
 				abreListaVacinas();
+        
+			}
+		});
+        
+        botaoRemover.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				labelTitulo.setText("Clique na vacina que deseja remover:");
+				
+				removeVacina();
         
 			}
 		});
@@ -217,10 +234,12 @@ public class TelaListaVacinasPet extends JFrame {
     private void abreListaVacinas() {
     	painelBotoes.remove(botaoAtualizar);
     	painelBotoes.remove(botaoAdicionar);
+    	painelBotoes.remove(botaoRemover);
     	painelBotoes.remove(botaoVoltar);
     	
     	painelBotoes.add(botaoAtualizar);
     	painelBotoes.add(botaoAdicionar);
+    	painelBotoes.add(botaoRemover);
     	painelBotoes.add(botaoVoltar);
     	
     	
@@ -256,6 +275,60 @@ public class TelaListaVacinasPet extends JFrame {
 	    			}
 	    		});
 	            //botaoVacina.addActionListener(e -> controlePet.adicionaVacinaPet(vacina));
+	            
+	            botaoVacina.setForeground(Color.BLACK);
+	            botaoVacina.setBackground(Color.WHITE);
+	            botaoVacina.setFont(FontesMiniProjeto.fontePadrao);
+	            
+	            painelVacinas.add(botaoVacina, gbc);
+	            gbc.gridy++;
+	        }
+        }
+        
+        //Atualizando o conteúdo dos componente na tela:
+        
+        //É usado para invalidar o layout do componente, o que significa que o layout manager será chamado para recalcular o tamanho e a posição do componente. Isso é útil quando você adiciona ou remove componentes de um container ou quando muda o tamanho de um componente.
+        painelVacinas.revalidate();
+        
+        //É usado para repintar o componente. Isso significa que o componente será redesenhado na tela. Isso é útil quando você altera o conteúdo de um componente, como mudar o texto de um JLabel ou mudar a cor de fundo de um JPanel.
+        painelVacinas.repaint();
+        
+        //pack(); //É utilizado para ajustar o tamanho da janela de acordo com o tamanho dos componentes contidos nela. Ele ajusta o tamanho da janela para que todos os componentes sejam exibidos corretamente, sem deixar espaços vazios.
+        
+    }
+    
+    private void removeVacina() {
+        painelVacinas.removeAll();
+        
+        vacinas = controlePet.getVacinas();
+        
+        if(vacinas.isEmpty()) {
+        	JLabel label = new JLabel("Este animal de estimação ainda não recebeu uma vacina!");
+        	
+        	label.setFont(FontesMiniProjeto.fontePadrao);
+        	label.setForeground(Color.RED);
+
+        	UIManager.put("OptionPane.buttonFont", FontesMiniProjeto.fontePadrao);
+        	
+        	UIManager.put("OptionPane.foreground", Color.BLACK);
+        	UIManager.put("OptionPane.background", Color.WHITE);
+        	
+        	JOptionPane.showMessageDialog(null, label, "Aviso", JOptionPane.WARNING_MESSAGE);
+
+        } else {
+	        for (Vacina vacina : vacinas) {
+	            JButton botaoVacina = new JButton(vacina.getTipo());
+	            
+	            botaoVacina.addActionListener(new ActionListener() {
+	    			public void actionPerformed(ActionEvent e) {
+	    				controlePet.removeVacinaPet(vacina);
+	    				
+	    				labelTitulo.setText("Vacinas recebidas:");
+	            
+	            		atualizaLista();
+	            
+	    			}
+	    		});
 	            
 	            botaoVacina.setForeground(Color.BLACK);
 	            botaoVacina.setBackground(Color.WHITE);
