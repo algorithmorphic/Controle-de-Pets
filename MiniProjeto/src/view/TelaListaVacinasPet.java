@@ -29,6 +29,9 @@ import model.Vacina;
 
 public class TelaListaVacinasPet extends JFrame {
     private JPanel painelVacinas;
+    private JPanel painelBotoes;
+    private JPanel painelTitulo;
+    private JLabel labelTitulo;
     private JButton botaoNovaBusca;
     private JButton botaoAdicionar;
     private JButton botaoVoltar;
@@ -65,9 +68,9 @@ public class TelaListaVacinasPet extends JFrame {
     	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
         
-        JPanel painelTitulo = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        painelTitulo = new JPanel(new FlowLayout(FlowLayout.CENTER));
         
-        JLabel labelTitulo = new JLabel("Vacinas recebidas:");
+        labelTitulo = new JLabel("Vacinas recebidas:");
         
         labelTitulo.setFont(FontesMiniProjeto.fontePadrao);
         painelTitulo.add(labelTitulo);
@@ -92,7 +95,7 @@ public class TelaListaVacinasPet extends JFrame {
         
         
         //Cria um painel para conter três botões.
-        JPanel painelBotoes = new JPanel();
+        painelBotoes = new JPanel();
         
         //Definine o layout do painel dos botões.
         painelBotoes.setLayout(new BoxLayout(painelBotoes, BoxLayout.X_AXIS));
@@ -212,6 +215,17 @@ public class TelaListaVacinasPet extends JFrame {
     
     //Atualiza a lista de vacinas apresentada na tela.
     private void abreListaVacinas() {
+    	labelTitulo.setText("Vacinas recebidas:");
+    	
+    	painelBotoes.remove(botaoNovaBusca);
+    	painelBotoes.remove(botaoAdicionar);
+    	painelBotoes.remove(botaoVoltar);
+    	
+    	painelBotoes.add(botaoNovaBusca);
+    	painelBotoes.add(botaoAdicionar);
+    	painelBotoes.add(botaoVoltar);
+    	
+    	
         painelVacinas.removeAll();
         
         vacinas = controleVacina.getVacinas();
