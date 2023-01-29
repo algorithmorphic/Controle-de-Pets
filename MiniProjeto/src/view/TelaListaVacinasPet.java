@@ -32,7 +32,7 @@ public class TelaListaVacinasPet extends JFrame {
     private JPanel painelBotoes;
     private JPanel painelTitulo;
     private JLabel labelTitulo;
-    private JButton botaoNovaBusca;
+    private JButton botaoAtualizar;
     private JButton botaoAdicionar;
     private JButton botaoVoltar;
     
@@ -102,15 +102,15 @@ public class TelaListaVacinasPet extends JFrame {
         
         
         //Cria os dois botões.
-        botaoNovaBusca = new JButton("Nova busca");
+        botaoAtualizar = new JButton("Atualizar");
         botaoAdicionar = new JButton("Adicionar");
         botaoVoltar = new JButton("Voltar");
         
         //Define o tamanho, a aparência e a fonte dos botões.
-        botaoNovaBusca.setPreferredSize(new Dimension(200, 50));
-        botaoNovaBusca.setForeground(Color.BLACK);
-        botaoNovaBusca.setBackground(Color.WHITE);
-        botaoNovaBusca.setFont(FontesMiniProjeto.fontePadrao);
+        botaoAtualizar.setPreferredSize(new Dimension(200, 50));
+        botaoAtualizar.setForeground(Color.BLACK);
+        botaoAtualizar.setBackground(Color.WHITE);
+        botaoAtualizar.setFont(FontesMiniProjeto.fontePadrao);
         
         botaoAdicionar.setPreferredSize(new Dimension(200, 50));
         botaoAdicionar.setForeground(Color.BLACK);
@@ -123,7 +123,7 @@ public class TelaListaVacinasPet extends JFrame {
         botaoVoltar.setFont(FontesMiniProjeto.fontePadrao);
         
         //Adiciona os botões ao painel de botões.
-        painelBotoes.add(botaoNovaBusca);
+        painelBotoes.add(botaoAtualizar);
         painelBotoes.add(botaoAdicionar);
         painelBotoes.add(botaoVoltar);
         
@@ -143,7 +143,7 @@ public class TelaListaVacinasPet extends JFrame {
         //Adiciona uma ação aos botões criados.
         
         //botaoNovaBusca.addActionListener(e -> controlePet.abreTelaBuscaNomePet());
-        botaoNovaBusca.addActionListener(new ActionListener() {
+        botaoAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				labelTitulo.setText("Vacinas recebidas:");
 				
@@ -215,11 +215,11 @@ public class TelaListaVacinasPet extends JFrame {
     
     //Atualiza a lista de vacinas apresentada na tela.
     private void abreListaVacinas() {
-    	painelBotoes.remove(botaoNovaBusca);
+    	painelBotoes.remove(botaoAtualizar);
     	painelBotoes.remove(botaoAdicionar);
     	painelBotoes.remove(botaoVoltar);
     	
-    	painelBotoes.add(botaoNovaBusca);
+    	painelBotoes.add(botaoAtualizar);
     	painelBotoes.add(botaoAdicionar);
     	painelBotoes.add(botaoVoltar);
     	
