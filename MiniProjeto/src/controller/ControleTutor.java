@@ -21,7 +21,9 @@ public class ControleTutor {
 	int variavelAuxiliarTutor;
 	
 	/**
-	 * 
+	 * Construtor da classe.
+	 * Instancia uma lista de de tutores.
+	 * Utiliza o recurso de uma variável auxiliar para controle de dados.
 	 */
 	public ControleTutor() {
 		super();
@@ -32,7 +34,7 @@ public class ControleTutor {
 	}
 	
 	/**
-	 * 
+	 * Abre a tela responsável pelo CRUD de um proprietário de um animal de estimação (tutor).
 	 */
 	public void abreTelaTutor() {
 		telaTutor = new TelaTutor(this, tutores);
@@ -41,7 +43,7 @@ public class ControleTutor {
 	}
 	
 	/**
-	 * 
+	 * Abre uma tela na qual é possível realizar o cadastro de um tutor.
 	 */
 	public void abreTelaCadastroTutor() {
 		telaCadastroTutor = new TelaCadastroTutor(this, tutores);
@@ -50,7 +52,8 @@ public class ControleTutor {
 	}
 
 	/**
-	 * 
+	 * Abre uma tela que fornece os detalhes editáveis de um tutor.
+	 * @param tutor o tutor selecionado.
 	 */
 	public void abreTelaDetalhesTutor(Tutor tutor) {
 		telaDetalhesTutor = new TelaDetalhesTutor(this, tutor);
@@ -59,8 +62,15 @@ public class ControleTutor {
 	}
 	
     /** 
-	 * Adiciona um tutor ao ArrayList de tutores.
-	 * 
+	 * Cria e adiciona um tutor a uma lista de tutores.
+	 * @param nome o nome do tutor.
+	 * @param sobrenome o sobrenome do tutor.
+	 * @param dataNascimento a data de nascimento do tutor.
+	 * @param endereco o endereço do tutor.
+	 * @param telefone o telefone do tutor.
+	 * @param email o e-mail do tutor.
+	 * @param rg o RG do tutor.
+	 * @param cpf o CPF do tutor.
 	 */
     public void adicionaTutor(String nome, String sobrenome, LocalDate dataNascimento, String endereco, int telefone, String email, String rg, String cpf) {
         //Cria uma nova instância da classe Tutor com os dados fornecidos.
@@ -70,14 +80,16 @@ public class ControleTutor {
     }
     
 	/**
-	 * 
+	 * Remove um tutor específico da lista de tutores.
+	 * @param tutor o tutor selecionado.
 	 */
     public void removeTutor(Tutor tutor) {
     	tutores.remove(tutor);
     }
     
 	/**
-	 * 
+	 * Obtém a lista de tutores.
+	 * @return tutores a lista de tutores.
 	 */
     public ArrayList<Tutor> getTutores() {
     	return tutores;
@@ -85,7 +97,9 @@ public class ControleTutor {
     }
     
 	/**
-	 * 
+	 * Realiza o pré-cadastro de dados de alguns tutores.
+	 * @param variavelAuxiliar uma variável utilizada para verificar se o pré-cadastro já foi ou não realizado.
+	 * Caso a variável auxiliar contenha o valor "0", significa que o pré-cadastro não foi realizado. Caso contrário, significa que o pré-cadastro foi realizado. 
 	 */
     public void fillWithSomeData(int variavelAuxiliarTutor) {
     	if(this.variavelAuxiliarTutor == variavelAuxiliarTutor) {

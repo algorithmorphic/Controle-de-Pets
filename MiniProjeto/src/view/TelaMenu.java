@@ -9,6 +9,15 @@ import controller.ControleVacina;
 import java.awt.*;
 import java.awt.event.*;
 
+
+/**
+ * Classe TelaMenu é responsável por exibir a tela principal do sistema, onde o usuário pode escolher as opções de Tutor, Animal de Estimação, Cartão de Vacinação e Vermifugação e Vacina.
+ *A classe instancia os controladores ControleTutor, ControlePet e ControleVacina, e os inicializa com pré-cadastro de dados.
+ *Também define as configurações e posições dos botões na tela, adiciona ações aos botões e define a aparência da tela.
+ *@author Artur Ricardo
+ * @since 2023
+ * @version 1.0
+ */
 public class TelaMenu {
 	JFrame telaMenu = new JFrame("Controle de Animais de Estimação");
 	JButton botaoTutor = new JButton("Tutor");

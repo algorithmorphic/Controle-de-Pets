@@ -96,6 +96,7 @@ public class ControlePet {
 
 	/**
 	 * Abre uma tela com os detalhes do animal de estimação, sendo possível, inclusive, alterá-los.
+	 * @param pet o animal de estimação escolhido.
 	 */
 	public void abreTelaDetalhesPet(Pet pet) {
 		telaDetalhesPet = new TelaDetalhesPet(this, pet);
@@ -105,6 +106,7 @@ public class ControlePet {
 	
 	/**
 	 * Abre uma tela contendo a listagem de vacinas recebidas por um determinado animal de estimação.
+	 * @param pet o animal de estimação escolhido.
 	 */
 	public void abreTelaListaVacinasPet(Pet pet) {
 		telaListaVacinasPet = new TelaListaVacinasPet(this, vacinas, controleVacina);
@@ -113,6 +115,14 @@ public class ControlePet {
 	
 	/**
 	 * Cria e adiciona um animal de estimação (pet) à lista de animais de estimação (pets).
+	 * @param nome o nome do animal de estimação.
+	 * @param especie a espécie do animal de estimação.
+	 * @param raca a raça do animal de estimação.
+	 * @param sexo o sexo do animal de estimação.
+	 * @param cor a cor/pelagem do animal de estimação.
+	 * @param dataNascimento a data de nascimento do animal de estimação.
+	 * @param microchip o número/código do microchip do animal de estimação.
+	 * @param rga o Registro Geral do Animal do animal de estimação.
 	 */
     public void adicionaPet(String nome, String especie, String raca, String sexo, String cor, LocalDate dataNascimento, String microchip, String rga) {
         //Cria uma nova instância da classe Pet com os dados fornecidos.
@@ -123,6 +133,7 @@ public class ControlePet {
     
     /**
 	 * Remove um animal de estimação (pet) da lista de animais de estimação (pets).
+	 * @param pet o animal de estimação escolhido.
 	 */
     public void removePet(Pet pet) {
     	pets.remove(pet);
@@ -185,8 +196,8 @@ public class ControlePet {
     
     /**
 	 * Pré-cadastro de dados de alguns animais de estimação.
-	 * @param variavelAuxiliar variável utilizada para verificar se o pré-cadastro já foi ou não realizado, a fim de evitar que os dados sejam cadastrados novamente no sistema.
-	 * Se variavelAuxiliar for igual a 0, significa que ainda não houve um pré-cadastro de dados de animais de estimação. Caso contrário, significa que j
+	 * @param variavelAuxiliarPet variável utilizada para verificar se o pré-cadastro já foi ou não realizado, a fim de evitar que os dados sejam cadastrados novamente no sistema.
+	 * Se variavelAuxiliar for igual a 0, significa que ainda não houve um pré-cadastro de dados de animais de estimação. Caso contrário, significa que o pré-cadastro foi realizado.
 	 */
     public void fillWithSomeData(int variavelAuxiliarPet) {
     	if(this.variavelAuxiliarPet == variavelAuxiliarPet) {
@@ -202,9 +213,4 @@ public class ControlePet {
     	
     }
     
-    // método para exibir os pets de um tutor
-/*    public ArrayList<Pet> exibirPets(Tutor tutor) {
-        return tutor.mostraPets();
-    }
-*/
 }

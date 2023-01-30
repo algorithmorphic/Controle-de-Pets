@@ -44,7 +44,7 @@ public class ControleVacina {
 	}
 	
 	/**
-	 * 
+	 * Abre a tela responsável pelo CRUD de vacinas.
 	 */
 	public void abreTelaVacina() {
 		telaVacina = new TelaVacina(this, vacinas);
@@ -53,7 +53,7 @@ public class ControleVacina {
 	}
 	
 	/**
-	 * 
+	 * Abre uma tela na qual é possível realizar o cadastro de uma vacina.
 	 */
 	public void abreTelaCadastroVacina() {
 		telaCadastroVacina = new TelaCadastroVacina(this, vacinas);
@@ -62,7 +62,7 @@ public class ControleVacina {
 	}
 
     /**
-	 * Abre a tela de detalhes de vacinas.
+	 * Abre a tela com os detalhes dos dados de uma determinada vacina.
 	 * @param vacina vacina selecionada.
 	 */
 	public void abreTelaDetalhesVacina(Vacina vacina) {
@@ -93,7 +93,8 @@ public class ControleVacina {
     }
     
 	/**
-	 * 
+	 * Remove uma vacina específica da lista de vacinas.
+	 * @param vacina vacina selecionada.
 	 */
     public void removeVacina(Vacina vacina) {
     	vacinas.remove(vacina);
@@ -101,7 +102,8 @@ public class ControleVacina {
     }
     
 	/**
-	 * 
+	 * Obtém a lista de vacinas.
+	 * @return vacinas lista de vacinas.
 	 */
     public ArrayList<Vacina> getVacinas() {
     	return vacinas;
@@ -109,7 +111,9 @@ public class ControleVacina {
     }
     
 	/**
-	 * 
+	 * Altera o status atual da vacina para um status específico.
+	 * @param vacina a vacina selecionada.
+	 * @param status o status escolhido.
 	 */
     public void alteraStatusVacina(Vacina vacina, Boolean status) {
     	vacina.setStatus(status);

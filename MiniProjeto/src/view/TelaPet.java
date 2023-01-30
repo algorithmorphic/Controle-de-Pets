@@ -15,6 +15,18 @@ import java.util.ArrayList;
 import controller.ControlePet;
 import model.Pet;
 
+
+/**
+ *
+ *TelaPet é uma classe que representa a tela principal do CRUD de animais de estimação.
+ *Esta classe estende JFrame e contém métodos e componentes gráficos como painéis, botões e rótulos.
+ *Possui referência ao objeto ControlePet e uma lista de objetos do tipo Pet para exibição na tela.
+ *O layout da tela é definido como BorderLayout, e um layout específico é definido para o painel de pets, usando o GridBagLayout.
+ *Os botões são criados para realizar as ações de Cadastrar, Buscar, Atualizar e Voltar.
+ *@author Artur Ricardo
+ *@since 2023
+ *@version 1.0
+ */
 public class TelaPet extends JFrame {
     private JPanel painelPets;
     private JButton botaoCadastrar;
