@@ -1,6 +1,5 @@
 package view;
 
-import model.*;
 import javax.swing.*;
 
 import controller.ControlePet;

@@ -23,8 +23,6 @@ import javax.swing.UIManager;
 
 import controller.ControlePet;
 import controller.ControleVacina;
-import model.Pet;
-import model.Tutor;
 import model.Vacina;
 
 public class TelaListaVacinasPet extends JFrame {
@@ -40,7 +38,6 @@ public class TelaListaVacinasPet extends JFrame {
     private ControlePet controlePet;
     private ControleVacina controleVacina;
     private ArrayList<Vacina> vacinas;
-    private int variavelAuxiliar;
     
     //Declação para funcionar dentro de escopos diferentes aqui no código.
     GridBagConstraints gbc;

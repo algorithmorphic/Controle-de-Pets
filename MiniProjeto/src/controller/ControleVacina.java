@@ -2,10 +2,17 @@ package controller;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-
 import model.*;
 import view.*;
 
+/**
+ * Classe que controla as operações relacionadas às vacinas.
+ * Controla as operações relacionadas às vacinas, como adicionar, remover,
+ * exibir detalhes e alterar status.
+ * @author Artur Ricardo
+ * @since 2023
+ * @version 1.0
+ */
 public class ControleVacina {
 	Vacina vacina;
 	TelaVacina telaVacina;
@@ -16,7 +23,10 @@ public class ControleVacina {
 	private ControlePet controlePet;
 	int variavelAuxiliarVacina;
 	
-	//Construtor
+   /**
+	* Construtor da classe.
+	* Inicializa o ArrayList de vacinas e a variável auxiliar.
+	*/
 	public ControleVacina() {
 		super();
 		vacinas = new ArrayList<Vacina>();
@@ -24,23 +34,37 @@ public class ControleVacina {
 		
 	}
 	
+   /**
+	* Fornece o controlador de pets para a classe.
+	* @param controlePet controlador de pets.
+	*/
 	public void forneceControlePet(ControlePet controlePet) {
 		this.controlePet = controlePet;
+	
 	}
 	
+	/**
+	 * 
+	 */
 	public void abreTelaVacina() {
 		telaVacina = new TelaVacina(this, vacinas);
 		telaVacina.setVisible(true);
 		
 	}
 	
+	/**
+	 * 
+	 */
 	public void abreTelaCadastroVacina() {
 		telaCadastroVacina = new TelaCadastroVacina(this, vacinas);
 		telaCadastroVacina.setVisible(true);
 		
 	}
 
-
+    /**
+	 * Abre a tela de detalhes de vacinas.
+	 * @param vacina vacina selecionada.
+	 */
 	public void abreTelaDetalhesVacina(Vacina vacina) {
 		telaDetalhesVacina = new TelaDetalhesVacina(this, vacina, controlePet);
 		telaDetalhesVacina.setVisible(true);
@@ -48,26 +72,53 @@ public class ControleVacina {
 	}
 
 	
-    //Adiciona uma vacina ao ArrayList de vacinas.
+    /**
+	 * Adiciona uma vacina ao ArrayList de vacinas.
+	 * @param nome nome da vacina.
+	 * @param fabricante fabricante da vacina.
+   	 * @param dataFabricacao data de fabricação da vacina.
+	 * @param dataValidade data de validade da vacina.
+	 * @param lote lote da vacina.
+	 * @param status status da vacina.
+	 * @param medicoVeterinario médico veterinário responsável pela vacina.
+	 * @param crmv CRMV do médico veterinário.
+	 * @param uf UF do CRMV do médico veterinário.
+	 */ 
     public void adicionaVacina(String nome, String fabricante, LocalDate dataFabricacao, LocalDate dataValidade, String lote, boolean status, String medicoVeterinario, String crmv, String uf) {
         //Cria uma nova instância da classe Vacina com os dados fornecidos.
         vacina = new Vacina(nome, fabricante, dataFabricacao, dataValidade, lote, status, medicoVeterinario, crmv, uf);
         
         vacinas.add(vacina);
+    
     }
     
+	/**
+	 * 
+	 */
     public void removeVacina(Vacina vacina) {
     	vacinas.remove(vacina);
+    
     }
     
+	/**
+	 * 
+	 */
     public ArrayList<Vacina> getVacinas() {
     	return vacinas;
+    
     }
     
+	/**
+	 * 
+	 */
     public void alteraStatusVacina(Vacina vacina, Boolean status) {
     	vacina.setStatus(status);
+    
     }
     
+	/**
+	 * Pré-cadastra os dados de algumas vacinas.
+	 */
     public void fillWithSomeData(int variavelAuxiliarVacina) {
     	if(this.variavelAuxiliarVacina == variavelAuxiliarVacina) {
     		adicionaVacina("V8", "Lema-Injex Biologic", LocalDate.parse("2021-03-03"), LocalDate.parse("2023-03-03"), "000000", true, "Fulano Sobrenome Aleatório", "567890123456789", "1234567");
@@ -88,9 +139,4 @@ public class ControleVacina {
     	
     }
     
-    // método para exibir os pets de um tutor
-/*    public ArrayList<Pet> exibirPets(Tutor tutor) {
-        return tutor.mostraPets();
-    }
-*/
 }

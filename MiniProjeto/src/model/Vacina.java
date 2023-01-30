@@ -2,6 +2,7 @@ package model;
 
 import java.time.LocalDate;
 
+
 public class Vacina extends Medicamento {
 	private String medicoVeterinario;
 	private String crmv;
@@ -27,26 +28,32 @@ public class Vacina extends Medicamento {
 	
 	public String getMedicoVeterinario() {
 		return medicoVeterinario;
+	
 	}
 
 	public void setMedicoVeterinario(String medicoVeterinario) {
 		this.medicoVeterinario = medicoVeterinario;
+	
 	}
 
 	public String getCrmv() {
 		return crmv;
+	
 	}
 
 	public void setCrmv(String crmv) {
 		this.crmv = crmv;
+	
 	}
 
 	public String getUf() {
 		return uf;
+	
 	}
 
 	public void setUf(String uf) {
 		this.uf = uf;
+	
 	}
 	
 }

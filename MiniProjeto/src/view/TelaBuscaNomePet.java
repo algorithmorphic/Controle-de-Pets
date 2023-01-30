@@ -17,7 +17,8 @@ import controller.ControlePet;
 
 public class TelaBuscaNomePet extends JFrame {
 	private JPanel painelTitulo;
-	private JLabel labelTitulo;
+	private JLabel labelTitulo1;
+	private JLabel labelTitulo2;
 	private JTextField campoTextoNome;
 	private JButton botaoBuscar;
 	
@@ -36,10 +37,10 @@ public class TelaBuscaNomePet extends JFrame {
     	setLocationRelativeTo(null);
     	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             
-        JPanel painelTitulo = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        painelTitulo = new JPanel(new FlowLayout(FlowLayout.CENTER));
         
-        JLabel labelTitulo1 = new JLabel("Insira o nome do");
-        JLabel labelTitulo2 = new JLabel("animal de estimação: ");
+        labelTitulo1 = new JLabel("Insira o nome do");
+        labelTitulo2 = new JLabel("animal de estimação: ");
         
         labelTitulo1.setFont(FontesMiniProjeto.fontePadrao);
         painelTitulo.add(labelTitulo1);
